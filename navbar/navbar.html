@@ -3,106 +3,103 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nakedpress Navbar</title>
+    <title>Nakedpress Navbar - Tailwind</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="../navbar/navbar.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body>
-    <header class="navbar">
-      <div class="navbar-container">
-        <div class="navbar-left">
-          <button class="menu-toggle" id="menuToggle">
-            <span class="hamburger-icon">
-              <span class="line"></span>
-              <span class="line"></span>
-              <span class="line"></span>
+  <body class="font-sans text-gray-800">
+    <!-- Navbar -->
+    <header class="fixed top-0 left-0 w-full bg-white z-[1000]">
+      <div class="max-w-[1400px] mx-auto flex items-center justify-between px-8 py-8">
+        <!-- Left -->
+        <div class="flex items-center">
+          <button id="menuToggle" class="mr-6 p-2 flex items-center justify-center lg:hidden">
+            <span class="hamburger-icon flex flex-col justify-between w-5 h-4">
+              <span class="line w-full h-[2px] bg-gray-800 transition-all"></span>
+              <span class="line w-full h-[2px] bg-gray-800 transition-all"></span>
+              <span class="line w-full h-[2px] bg-gray-800 transition-all"></span>
             </span>
           </button>
-          <a href="/" class="logo">
-            <span class="logo-text">nakedpress</span>
+          <a href="/" class="flex items-center no-underline">
+            <span class="text-2xl font-bold text-green-700">nakedpress</span>
           </a>
         </div>
 
-        <nav class="navbar-center">
-          <ul class="nav-menu">
-            <li class="nav-item">
-              <a href="#" class="nav-link active">Home</a>
+        <!-- Center -->
+        <nav class="hidden lg:flex flex-1 justify-center">
+          <ul class="flex list-none">
+            <li class="mx-4">
+              <a href="#" class="nav-link text-sm font-medium text-green-700 border-b-2 border-green-700 pb-1">Home</a>
             </li>
-            <li class="nav-item"><a href="#" class="nav-link">Belanja</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Langganan</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Blog</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Bantuan</a></li>
+            <li class="mx-4"><a href="#" class="text-sm font-medium hover:text-green-700 transition">Belanja</a></li>
+            <li class="mx-4"><a href="#" class="text-sm font-medium hover:text-green-700 transition">Langganan</a></li>
+            <li class="mx-4"><a href="#" class="text-sm font-medium hover:text-green-700 transition">Blog</a></li>
+            <li class="mx-4"><a href="#" class="text-sm font-medium hover:text-green-700 transition">Bantuan</a></li>
           </ul>
         </nav>
 
-        <div class="navbar-right">
-          <button class="icon-button search-button">
+        <!-- Right -->
+        <div class="flex items-center">
+          <button class="ml-6 text-lg text-gray-800 hover:text-green-700 transition">
             <i class="fas fa-search"></i>
           </button>
         </div>
       </div>
     </header>
 
-    <div class="mobile-menu" id="mobileMenu">
-      <ul class="mobile-nav-menu">
-        <li class="mobile-nav-item">
-          <a href="#" class="mobile-nav-link">Home</a>
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed block top-[72px] left-0 w-full bg-white shadow-md py-4 px-8 -translate-y-full transition-all duration-300 z-[999]">
+      <ul class="list-none">
+        <li class="my-4">
+          <a href="#" class="block text-base font-medium text-gray-800 hover:text-green-700 transition">Home</a>
         </li>
-        <li class="mobile-nav-item">
-          <a href="#" class="mobile-nav-link">Belanja</a>
+        <li class="my-4">
+          <a href="#" class="block text-base font-medium text-gray-800 hover:text-green-700 transition">Belanja</a>
         </li>
-        <li class="mobile-nav-item">
-          <a href="#" class="mobile-nav-link">Langganan</a>
+        <li class="my-4">
+          <a href="#" class="block text-base font-medium text-gray-800 hover:text-green-700 transition">Langganan</a>
         </li>
-        <li class="mobile-nav-item">
-          <a href="#" class="mobile-nav-link">Blog</a>
+        <li class="my-4">
+          <a href="#" class="block text-base font-medium text-gray-800 hover:text-green-700 transition">Blog</a>
         </li>
-        <li class="mobile-nav-item">
-          <a href="#" class="mobile-nav-link">Bantuan</a>
+        <li class="my-4">
+          <a href="#" class="block text-base font-medium text-gray-800 hover:text-green-700 transition">Bantuan</a>
         </li>
       </ul>
     </div>
 
-    <!-- Navbar Functionality -->
-    <!-- <script>
-        const $menuToggle = $("#menuToggle");
-        const $mobileMenu = $("#mobileMenu");
-
-        $menuToggle.on("click", function () {
-          $mobileMenu.toggleClass("active");
-          $menuToggle.find(".line").toggleClass("active");
-        });
-
-        $(document).on("click", function (event) {
-          if (!$(event.target).closest("#menuToggle, #mobileMenu").length) {
-            $mobileMenu.removeClass("active");
-            $menuToggle.find(".line").removeClass("active");
-          }
-        });
-
-        const $hamburgerIcon = $(".hamburger-icon");
-        const $lines = $hamburgerIcon.find(".line");
-
-        $hamburgerIcon.on("click", function () {
-          $lines.toggleClass("active");
-        });
-
-        const style = `
-					  .hamburger-icon .line.active:nth-child(1) {
-						  transform: translateY(7px) rotate(45deg);
-					  }
-					  .hamburger-icon .line.active:nth-child(2) {
-						  opacity: 0;
-					  }
-					  .hamburger-icon .line.active:nth-child(3) {
-						  transform: translateY(-7px) rotate(-45deg);
-					  }
-				  `;
-        $("<style>").text(style).appendTo("head");
-    </script> -->
+    <!-- JS Toggle -->
+    <script>
+		$(document).ready(function () {
+			const $menuToggle = $("#menuToggle");
+			const $mobileMenu = $("#mobileMenu");
+			const $lines = $(".hamburger-icon .line");
+		  
+			$menuToggle.on("click", function () {
+			  $mobileMenu.toggleClass("translate-y-0");
+			  $mobileMenu.removeClass("-translate-y-100");
+		  
+			  $lines.eq(0).toggleClass("rotate-45 translate-y-[7px]");
+			  $lines.eq(1).toggleClass("opacity-0");
+			  $lines.eq(2).toggleClass("-rotate-45 -translate-y-[7px]");
+			});
+		  
+			$(document).on("click", function (e) {
+			  if (
+				!$(e.target).closest("#menuToggle").length &&
+				!$(e.target).closest("#mobileMenu").length
+			  ) {
+				$mobileMenu.removeClass("translate-y-0");
+				$mobileMenu.addClass("-translate-y-100");
+				$lines.eq(0).removeClass("rotate-45 translate-y-[7px]");
+				$lines.eq(1).removeClass("opacity-0");
+				$lines.eq(2).removeClass("-rotate-45 -translate-y-[7px]");
+			  }
+			});
+		  });		  
+    </script>
   </body>
 </html>
