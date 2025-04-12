@@ -68,3 +68,9 @@
 	background-size: cover;
 }
 
+.location-bg {
+	background-image: url("./assets/location-bg.webp") ;
+	background-position: top;
+	background-size: cover;
+}
+
