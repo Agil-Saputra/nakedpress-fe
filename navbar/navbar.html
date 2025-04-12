@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nakedpress Navbar</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../navbar/navbar.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="navbar-container">
+        <div class="navbar-left">
+          <button class="menu-toggle" id="menuToggle">
+            <span class="hamburger-icon">
+              <span class="line"></span>
+              <span class="line"></span>
+              <span class="line"></span>
+            </span>
+          </button>
+          <a href="/" class="logo">
+            <span class="logo-text">nakedpress</span>
+          </a>
+        </div>
+
+        <nav class="navbar-center">
+          <ul class="nav-menu">
+            <li class="nav-item">
+              <a href="#" class="nav-link active">Home</a>
+            </li>
+            <li class="nav-item"><a href="#" class="nav-link">Belanja</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Langganan</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Blog</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Bantuan</a></li>
+          </ul>
+        </nav>
+
+        <div class="navbar-right">
+          <button class="icon-button search-button">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <ul class="mobile-nav-menu">
+        <li class="mobile-nav-item">
+          <a href="#" class="mobile-nav-link">Home</a>
+        </li>
+        <li class="mobile-nav-item">
+          <a href="#" class="mobile-nav-link">Belanja</a>
+        </li>
+        <li class="mobile-nav-item">
+          <a href="#" class="mobile-nav-link">Langganan</a>
+        </li>
+        <li class="mobile-nav-item">
+          <a href="#" class="mobile-nav-link">Blog</a>
+        </li>
+        <li class="mobile-nav-item">
+          <a href="#" class="mobile-nav-link">Bantuan</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Navbar Functionality -->
+    <!-- <script>
+        const $menuToggle = $("#menuToggle");
+        const $mobileMenu = $("#mobileMenu");
+
+        $menuToggle.on("click", function () {
+          $mobileMenu.toggleClass("active");
+          $menuToggle.find(".line").toggleClass("active");
+        });
+
+        $(document).on("click", function (event) {
+          if (!$(event.target).closest("#menuToggle, #mobileMenu").length) {
+            $mobileMenu.removeClass("active");
+            $menuToggle.find(".line").removeClass("active");
+          }
+        });
+
+        const $hamburgerIcon = $(".hamburger-icon");
+        const $lines = $hamburgerIcon.find(".line");
+
+        $hamburgerIcon.on("click", function () {
+          $lines.toggleClass("active");
+        });
+
+        const style = `
+					  .hamburger-icon .line.active:nth-child(1) {
+						  transform: translateY(7px) rotate(45deg);
+					  }
+					  .hamburger-icon .line.active:nth-child(2) {
+						  opacity: 0;
+					  }
+					  .hamburger-icon .line.active:nth-child(3) {
+						  transform: translateY(-7px) rotate(-45deg);
+					  }
+				  `;
+        $("<style>").text(style).appendTo("head");
+    </script> -->
+  </body>
+</html>

@@ -1,0 +1,70 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+.layout-container {
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 2rem;
+	padding-right: 2rem;
+	max-width: 1280px;
+}
+
+.hero {
+	background-color: #f8f3e3;
+	position: relative;
+	overflow: hidden;
+	margin-top: 100px;
+	height: 400px;
+}
+
+.hero-container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	justify-items: center;
+	max-width: 1280px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.hero-content {
+	flex: 1;
+	width: 100%;
+	z-index: 1;
+	margin-top: 4rem;
+}
+
+.hero-image {
+	position: absolute;
+	top: 0;
+	left: 0;
+	object-fit: cover;
+	object-position: center;
+	height: 400px;
+	width: 100%;
+	z-index: 0;
+}
+
+/* .accordion-button.active + .accordion-content {
+	max-height: 500px;
+} */
+
+.endurance-bg {
+	background-image: url("./assets/endurance-bundle-bg.jpg") ;
+	background-position: center;
+	background-size: cover;
+}
+
+.about-detox-bg {
+	background-image: url("./assets/best-seller-2.webp") ;
+	background-position: center;
+	background-size: cover;
+} 
+
+.about-us-bg {
+	background-image: url("./assets/about-us.webp") ;
+	background-position: top;
+	background-size: cover;
+}
+
