@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail Product</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <script src="./consts/best-seller-products.js"></script>
+    <script src="./consts/faq.js"></script>
+    <style>
+      .accordion-button {
+        height: 60px;
+        overflow: hidden;
+        transition: all 0.3s ease-out;
+      }
+      .active {
+        height: fit-content;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div id="navbar-container"></div>
+    </header>
+
+    <main class="mx-auto max-w-7xl px-4 my-32">
+      <nav class="mb-12">
+        <ul class="flex space-x-2 text-sm">
+          <li>
+            <a href="/" class="text-green-700 hover:underline"> Home </a>
+          </li>
+          <li>|</li>
+          <li>
+            <a href="/blog" class="text-green-700 hover:underline"> Blog </a>
+          </li>
+          <li>|</li>
+          <li>
+            <a href="/stories" class="text-green-700 hover:underline">
+              Stories
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="flex flex-col md:flex-row gap-8">
+        <img
+          src="./assets/best-seller-2.webp"
+          class="md:w-1/2 bg-[#fff9e6] rounded-lg relative overflow-hidden"
+        />
+        <!-- Right Column - Product Details -->
+        <div class="md:w-1/2">
+          <h1 class="text-4xl font-bold mb-2">Detox Original</h1>
+          <p class="text-gray-700 mb-6">
+            Untuk jaga kolesterol dan gula darah normal
+          </p>
+
+          <p class="text-2xl font-bold mb-6">Rp 320.000</p>
+
+          <button
+            class="open-modal bg-green-700 text-white font-bold py-3 px-6 rounded-full w-full mb-10 hover:bg-green-800 transition"
+			data-title="apa gitu"
+			data-url="/"
+          >
+            Beli
+          </button>
+
+          <div class="mb-8">
+            <h2 class="text-2xl font-bold mb-4">Tentang Detox Original</h2>
+            <p class="text-gray-700 mb-4">
+              Detox Original adalah paket detox yang terdiri dari 8 botol (330
+              mL per botol) jus buah dan sayur segar, yang dibuat khusus untuk
+              menjaga kadar kolesterol dan gula darah tetap normal.
+            </p>
+            <p class="text-gray-700 mb-4">
+              Detox original kaya akan vitamin A, vitamin B kompleks, vitamin C,
+              Asam Folat, Zat Besi, Zinc, Magnesium, Kalsium, Antioksidan dan
+              Prebiotik
+            </p>
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-bold mb-4">Manfaat Detox Original</h2>
+            <ol class="list-decimal pl-5 space-y-3">
+              <li>Membantu menurunkan kolesterol tinggi</li>
+              <li>Menormalkan kadar gula darah tinggi</li>
+              <li>Mengurangi <em>craving</em></li>
+              <li>Berat badan lebih gampang ideal</li>
+              <li>Baik untuk kesehatan jantung</li>
+              <li>Bantu menurunkan asam urat</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer-container"></footer>
+
+	<!-- iframe modal -->
+    <div
+      id="reusableModal"
+      class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden"
+    >
+      <div class="bg-white rounded-lg shadow-lg w-11/12 max-w-lg">
+        <div class="flex justify-between items-center border-b p-4">
+          <h2 class="text-lg font-semibold modal-title">Modal Title</h2>
+          <button class="close-modal text-gray-500 hover:text-red-500 text-xl">
+            &times;
+          </button>
+        </div>
+        <iframe
+          class="modal-url w-full h-[35rem]"
+          title="iframe-title"
+        ></iframe>
+      </div>
+    </div>
+    <!-- Modal Button functionnility -->
+    <script>
+      $(document).ready(function () {
+        $(".open-modal").on("click", function () {
+          const title = $(this).data("title");
+          const src = $(this).data("url");
+
+          $("#reusableModal .modal-title").text(title);
+          $("#reusableModal .modal-url").attr("src", src);
+          $("#reusableModal").removeClass("hidden");
+        });
+
+        $(".close-modal").on("click", function () {
+          $("#reusableModal").addClass("hidden");
+        });
+
+        // Optional: close when clicking outside the modal
+        $("#reusableModal").on("click", function (e) {
+          if (e.target === this) {
+            $(this).addClass("hidden");
+          }
+        });
+      });
+    </script>
+
+    <!-- Navbar & Footer loader -->
+    <script>
+      $(document).ready(function () {
+        $("#navbar-container").load("./navbar/navbar.html");
+        $("#footer-container").load("./footer/footer.html");
+      });
+    </script>
+  </body>
+</html>

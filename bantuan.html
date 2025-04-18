@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bantuan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <script src="./consts/best-seller-products.js"></script>
+    <script src="./consts/faq.js"></script>
+    <style>
+      .accordion-button {
+        height: 60px;
+        overflow: hidden;
+        transition: all 0.3s ease-out;
+      }
+      .active {
+        height: fit-content;
+      }
+    </style>
+  </head>
+  <body class="bg-white">
+    <header>
+      <div id="navbar-container"></div>
+    </header>
+
+    <main class="mx-auto max-w-7xl px-4 my-32">
+      <section>
+        <h2 class="text-2xl font-bold mb-4">FAQ</h2>
+        <p class="text-gray-600 mb-8">
+          Pertanyaan umum seputar nakedpress, detox, dan cold pressed juice
+        </p>
+
+        <div id="faq-container" class="space-y-4"></div>
+      </section>
+    </main>
+
+    <footer id="footer-container"></footer>
+
+    <!-- Navbar & Footer loader -->
+    <script>
+      $(document).ready(function () {
+        $("#navbar-container").load("./navbar/navbar.html");
+        $("#footer-container").load("./footer/footer.html");
+      });
+    </script>
+
+    <!-- FAQ Loader -->
+    <script>
+      $(document).ready(function () {
+        const $faqContainer = $("#faq-container");
+
+        FAQ.forEach(function (item) {
+          const cardHtml = `
+			  <div class="accordion-button cursor-pointer transition-all border border-gray-200 rounded-lg">
+				<div
+				  class="flex justify-between items-center w-full p-4 text-left"
+				>
+				  <span class="text-green-600 font-medium">${item.question}</span>
+				  <i class="fas fa-plus text-green-600"></i>
+				</div>
+				<div class="px-4 pb-4">
+				  <p class="text-gray-600">
+				  ${item.answer}
+				  </p>
+				</div>
+			  </div>
+			`;
+
+          $faqContainer.append(cardHtml);
+        });
+      });
+    </script>
+    <!-- Accordion Functionality -->
+    <script>
+      $(document).ready(function () {
+        // Accordion functionality
+        $(".accordion-button").each(function () {
+          $(this).on("click", function () {
+            console.log("sd");
+            $(this).toggleClass("active");
+            const $icon = $(this).find("i");
+            if ($icon.hasClass("fa-plus")) {
+              $icon.removeClass("fa-plus").addClass("fa-minus");
+            } else {
+              $icon.removeClass("fa-minus").addClass("fa-plus");
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

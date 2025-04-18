@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Belanja</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "green-primary": "#3a8505",
+              "green-button": "#3a8505",
+              "beige-bg": "#f9e8dd",
+              "green-bg": "#dce8c9",
+              "yellow-bg": "#f5f0d0",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .sidebar-item.active {
+        color: #3a8505;
+        font-weight: 600;
+        border-left: 3px solid #3a8505;
+      }
+      .sidebar-item.active .icon {
+        color: #3a8505;
+      }
+    </style>
+  </head>
+  <body class="bg-white">
+    <header>
+      <div id="navbar-container"></div>
+    </header>
+    <div
+      class="flex flex-col md:flex-row min-h-screen mx-auto max-w-7xl px-4 md:px-8 lg:px-16 mt-24"
+    >
+      <!-- Sidebar -->
+      <div class="md:w-64 w-full md:sticky top-24 md:h-screen">
+        <nav class="py-4">
+          <ul class="space-y-0">
+            <li>
+              <a
+                href="#detox-1-day"
+                class="sidebar-item flex items-center px-6 py-4 text-gray-700 hover:bg-gray-50 border-l-3 border-transparent"
+              >
+                <span class="icon w-6 text-gray-500"
+                  ><i class="fas fa-leaf"></i
+                ></span>
+                <span class="ml-4">Detox 1 Day</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="#daily-1-liter"
+                class="sidebar-item flex items-center px-6 py-4 text-gray-700 hover:bg-gray-50 border-l-3 border-transparent"
+              >
+                <span class="icon w-6 text-gray-500"
+                  ><i class="fas fa-bottle-water"></i
+                ></span>
+                <span class="ml-4">Daily 1 Liter</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="#mini-200ml"
+                class="sidebar-item flex items-center px-6 py-4 text-gray-700 hover:bg-gray-50 border-l-3 border-transparent"
+              >
+                <span class="icon w-6 text-gray-500"
+                  ><i class="fas fa-flask"></i
+                ></span>
+                <span class="ml-4">Mini 200ml</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="#daily-330ml"
+                class="sidebar-item flex items-center px-6 py-4 text-gray-700 hover:bg-gray-50 border-l-3 border-transparent"
+              >
+                <span class="icon w-6 text-gray-500"
+                  ><i class="fas fa-wine-bottle"></i
+                ></span>
+                <span class="ml-4">Daily 330ml</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="#breakfast"
+                class="sidebar-item flex items-center px-6 py-4 text-gray-700 hover:bg-gray-50 border-l-3 border-transparent"
+              >
+                <span class="icon w-6 text-gray-500"
+                  ><i class="fas fa-bag-shopping"></i
+                ></span>
+                <span class="ml-4">Breakfast</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Main Content -->
+      <main class="flex-1">
+        <!-- Detox 1 Day Section -->
+        <section id="detox-1-day" class="py-8 px-6 md:px-10">
+          <h1 class="text-xl md:text-3xl font-bold mb-4">Detox 1 Day</h1>
+          <p class="text-lg mb-8">
+            Bangun kebiasaan puasa dengan jus sayuran 1x seminggu untuk
+            meningkatkan self healing.
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Product Card 1 -->
+            <div class="rounded-lg overflow-hidden">
+              <div
+                class="h-64 bg-beige-bg rounded-lg flex items-center justify-center p-4"
+              >
+                <img
+                  src="/placeholder.svg?height=250&width=250"
+                  alt="Detox Maag GERD"
+                  class="max-h-full object-contain"
+                />
+              </div>
+              <div class="pt-4">
+                <h3 class="text-xl font-semibold text-green-primary">
+                  Detox Maag GERD
+                </h3>
+                <p class="text-gray-700 mt-1">
+                  untuk bantu redakan maag, GERD, atau LPR
+                </p>
+                <p class="font-semibold mt-4">Rp 320.000</p>
+                <button
+                  class="w-full bg-green-button text-white py-3 rounded-lg mt-4 font-medium"
+                >
+                  Beli
+                </button>
+              </div>
+            </div>
+
+            <!-- Product Card 2 -->
+            <div class="rounded-lg overflow-hidden">
+              <div
+                class="h-64 bg-green-bg rounded-lg flex items-center justify-center p-4"
+              >
+                <img
+                  src="/placeholder.svg?height=250&width=250"
+                  alt="Detox Original"
+                  class="max-h-full object-contain"
+                />
+              </div>
+              <div class="pt-4">
+                <h3 class="text-xl font-semibold text-green-primary">
+                  Detox Original
+                </h3>
+                <p class="text-gray-700 mt-1">
+                  Untuk jaga kolesterol dan gula darah normal
+                </p>
+                <p class="font-semibold mt-4">Rp 320.000</p>
+                <button
+                  class="w-full bg-green-button text-white py-3 rounded-lg mt-4 font-medium"
+                >
+                  Beli
+                </button>
+              </div>
+            </div>
+
+            <!-- Product Card 3 -->
+            <div class="rounded-lg overflow-hidden">
+              <div
+                class="h-64 bg-yellow-bg rounded-lg flex items-center justify-center p-4"
+              >
+                <img
+                  src="/placeholder.svg?height=250&width=250"
+                  alt="Detox Low Calorie"
+                  class="max-h-full object-contain"
+                />
+              </div>
+              <div class="pt-4">
+                <h3 class="text-xl font-semibold text-green-primary">
+                  Detox Low Calorie
+                </h3>
+                <p class="text-gray-700 mt-1">
+                  Untuk kamu yang mau menurunkan berat badan
+                </p>
+                <p class="font-semibold mt-4">Rp 320.000</p>
+                <button
+                  class="w-full bg-green-button text-white py-3 rounded-lg mt-4 font-medium"
+                >
+                  Beli
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Other Sections (for scrollspy demonstration) -->
+        <section
+          id="daily-1-liter"
+          class="py-8 px-6 md:px-10 min-h-screen bg-gray-50"
+        >
+          <h2 class="text-3xl font-bold mb-6">Daily 1 Liter</h2>
+          <p class="text-lg mb-8">
+            Our daily 1 liter juice options for complete nutrition.
+          </p>
+          <!-- Content would go here -->
+        </section>
+
+        <section id="mini-200ml" class="py-8 px-6 md:px-10">
+          <h2 class="text-3xl font-bold mb-6">Mini 200ml</h2>
+          <p class="text-lg mb-8">
+            Convenient 200ml bottles for on-the-go nutrition.
+          </p>
+          <!-- Content would go here -->
+        </section>
+
+        <section
+          id="daily-330ml"
+          class="py-8 px-6 md:px-10 min-h-screen bg-gray-50"
+        >
+          <h2 class="text-3xl font-bold mb-6">Daily 330ml</h2>
+          <p class="text-lg mb-8">
+            Perfect sized 330ml bottles for your daily needs.
+          </p>
+          <!-- Content would go here -->
+        </section>
+
+        <section id="breakfast" class="py-8 px-6 md:px-10 ">
+          <h2 class="text-3xl font-bold mb-6">Breakfast</h2>
+          <p class="text-lg mb-8">
+            Healthy breakfast options to start your day right.
+          </p>
+          <!-- Content would go here -->
+        </section>
+      </main>
+    </div>
+
+    <section class="mx-auto max-w-7xl py-8 px-4 md:px-8 lg:px-16">
+      <!-- Shop by Needs Section -->
+      <section class="mb-24">
+        <h1 class="text-4xl font-bold mb-2">Shop by Needs</h1>
+        <p class="text-lg mb-12">
+          Belanja dari kebutuhan kamu untuk mendukung kesehatan maksimal kamu.
+        </p>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-12">
+          <!-- Detox -->
+          <div class="flex flex-col items-center">
+            <div class="blob bg-detox/30 mb-4">
+              <svg
+                class="w-16 h-16"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 2L8 6V20C8 21.1 8.9 22 10 22H14C15.1 22 16 21.1 16 20V6L12 2Z"
+                  stroke="black"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M10 12H14"
+                  stroke="black"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M10 16H14"
+                  stroke="black"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M10 8H14"
+                  stroke="black"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <h3 class="font-medium text-center">Detox</h3>
+          </div>
+        </div>
+      </section>
+
+      <!-- How to Order Section -->
+      <section>
+        <h2 class="text-4xl font-bold text-center mb-16">Tata cara pesan</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Step 1 -->
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 bg-green-100 rounded-full p-4">
+              <svg
+                class="w-12 h-12"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M4 4H6L6.68 8M6.68 8L8 16H18L20 8H6.68Z"
+                  stroke="black"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <circle
+                  cx="9"
+                  cy="20"
+                  r="1"
+                  stroke="black"
+                  stroke-width="1.5"
+                />
+                <circle
+                  cx="17"
+                  cy="20"
+                  r="1"
+                  stroke="black"
+                  stroke-width="1.5"
+                />
+              </svg>
+            </div>
+            <div>
+              <p class="text-base">
+                Pesan, bayar, dan perubahan maksimal jam 3 sore untuk
+                pengantaran esok hari.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <footer id="footer-container"></footer>
+
+    <!-- Navbar & Footer loader -->
+    <script>
+      $(document).ready(function () {
+        $("#navbar-container").load("./navbar/navbar.html");
+        $("#footer-container").load("./footer/footer.html");
+      });
+    </script>
+
+    <script>
+      $(document).ready(function () {
+        // Function to update active sidebar item based on scroll position
+        function updateSidebar() {
+          const scrollPosition = $(window).scrollTop();
+
+          // Check each section's position
+          $("section").each(function () {
+            const sectionTop = $(this).offset().top - 100; // Offset for better UX
+            const sectionBottom = sectionTop + $(this).outerHeight();
+            const sectionId = $(this).attr("id");
+
+            // If the current scroll position is within this section
+            if (
+              scrollPosition >= sectionTop &&
+              scrollPosition < sectionBottom
+            ) {
+              // Remove active class from all sidebar items
+              $(".sidebar-item").removeClass("active");
+
+              // Add active class to the corresponding sidebar item
+              $('.sidebar-item[href="#' + sectionId + '"]').addClass("active");
+            }
+          });
+        }
+
+        // Initial call to set the active item
+        updateSidebar();
+
+        // Update on scroll
+        $(window).scroll(updateSidebar);
+
+        // Smooth scrolling for sidebar links
+        $(".sidebar-item").on("click", function (e) {
+          e.preventDefault();
+
+          const targetId = $(this).attr("href");
+          const targetPosition = $(targetId).offset().top;
+
+          $("html, body").animate(
+            {
+              scrollTop: targetPosition,
+            },
+            500
+          );
+        });
+      });
+    </script>
+  </body>
+</html>

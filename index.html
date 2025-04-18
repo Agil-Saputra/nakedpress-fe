@@ -54,7 +54,7 @@
           <h1 class="text-4xl md:text-5xl font-bold text-primary mb-4">
             Saatnya Detox
           </h1>
-          <p class="text-gray-700 mb-6 max-w-md">
+          <p class="mb-6 max-w-[23ch] lg:max-w-md">
             Puasa dengan 8 botol jus berisi. Berat badan ideal, Maag GERD aman,
             Mirin lancar dan Kolesterol turun.
           </p>
@@ -64,11 +64,15 @@
             Belanja
           </button>
         </div>
-        <div></div>
         <img
-          class="hero-image"
+          class="hero-image hidden lg:block"
           src="./assets/bg_homepage_desktop.jpg"
           alt="bg_homepage_desktop"
+        />
+        <img
+          class="hero-image-mobile block lg:hidden"
+          src="https://www.nakedpress.co/cdn/shop/files/May_Homepage_Mobile.jpg?v=1715831671"
+          alt="bg_homepage_mobile"
         />
       </div>
     </section>
@@ -155,28 +159,29 @@
 
       <!-- Subscription Section -->
       <section>
-          <div class="bg-secondary rounded-lg p-6 md:p-8 relative h-[350px]">
-            <div class="flex flex-col md:flex-row items-center">
-              <div class="md:w-1/2 mt-12 md:mb-0" style="z-index: 10;">
-                <h2 class="text-4xl md:text-3xl font-bold text-green-800 mb-2">
-                  Mau hemat 25%?
-                </h2>
-                <h3 class="text-2xl md:text-2xl font-bold text-green-800 mb-4">
-                  Beli Paket Langganan
-                </h3>
-                <button
-                  class="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-full transition duration-300"
-                >
-                  Langganan Sekarang
-                </button>
-              </div>
-                <img
-                  src="./assets/subscription-bg.webp"
-                  alt="Subscription Package" 
-                  class="w-full h-full rounded-lg absolute top-0 left-0 object-cover object-right"
-				  style="z-index: 1;"
-                />
-            </div>1
+        <div class="bg-secondary rounded-lg p-6 md:p-8 relative h-[350px]">
+          <div class="flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mt-12 md:mb-0" style="z-index: 10">
+              <h2 class="text-4xl md:text-3xl font-bold text-green-800 mb-2">
+                Mau hemat 25%?
+              </h2>
+              <h3 class="text-2xl md:text-2xl font-bold text-green-800 mb-4">
+                Beli Paket Langganan
+              </h3>
+              <button
+                class="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-full transition duration-300"
+              >
+                Langganan Sekarang
+              </button>
+            </div>
+            <img
+              src="./assets/subscription-bg.webp"
+              alt="Subscription Package"
+              class="w-full h-full rounded-lg absolute top-0 left-0 object-cover object-right"
+              style="z-index: 1"
+            />
+          </div>
+          1
         </div>
       </section>
 
@@ -269,6 +274,24 @@
     </main>
 
     <footer id="footer-container"></footer>
+    <!-- Product Modal -->
+    <div
+      id="reusableModal"
+      class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden"
+    >
+      <div class="bg-white rounded-lg shadow-lg w-11/12 max-w-lg">
+        <div class="flex justify-between items-center border-b p-4">
+          <h2 class="text-lg font-semibold modal-title">Modal Title</h2>
+          <button class="close-modal text-gray-500 hover:text-red-500 text-xl">
+            &times;
+          </button>
+        </div>
+        <iframe
+          class="modal-url w-full h-[35rem]"
+          title="iframe-title"
+        ></iframe>
+      </div>
+    </div>
   </body>
   <!-- Navbar & Footer loader -->
   <script>
@@ -284,7 +307,7 @@
 
       BEST_SELLER_PRODUCTS.forEach(function (item) {
         const cardHtml = `
-		  <div class="${item.backgroundColor} rounded-lg overflow-hidden">
+		  <div class="border rounded-lg overflow-hidden">
 			<img
 			  src="${item.image}"
 			  alt="${item.name}"
@@ -297,12 +320,16 @@
 			  <p class="text-sm text-gray-600 mb-2">
 			  ${item.description}
 			  </p>
-			  <p class="font-bold mb-1">Rp${item.price}</p>
+			  <div class="flex items-center gap-4 mt-2">
+			 <p class="font-bold mb-1">Rp${item.price}</p>
 			  <button
-				class="w-full bg-primary hover:bg-green-700 text-white font-medium py-2 px-4 rounded transition duration-300"
+				class="open-modal w-full bg-primary hover:bg-green-700 text-white font-medium py-2 px-4 rounded transition duration-300"
+				data-title="${item.name}"
+				data-url="https://www.w3schools.com"
 			  >
 				Beli
 			  </button>
+			  </div>
 			</div>
 		  </div>
 
@@ -330,17 +357,20 @@
 			  <p class="text-sm text-gray-600 mb-2">
 			  ${item.description}
 			  </p>
+			  <div class="flex items-center justify-between">
 			  <div class="flex items-center mb-3">
 				<p class="font-bold">${item.price}</p>
 				<p class="text-xs text-gray-500 line-through ml-2">
 				  Rp ${item.original_price}
 				</p>
 			  </div>
-			  <button
+			  	<button
 				class="bg-primary hover:bg-green-700 text-white font-medium py-1 px-4 rounded-full text-sm transition duration-300"
 			  >
 				Beli
 			  </button>
+			</div>
+
 			</div>
 		  </div>
 		`;
@@ -478,7 +508,7 @@
       });
     });
   </script>
-
+  <!-- Accordion Functionality -->
   <script>
     $(document).ready(function () {
       // Accordion functionality
@@ -493,6 +523,30 @@
             $icon.removeClass("fa-minus").addClass("fa-plus");
           }
         });
+      });
+    });
+  </script>
+  <!-- Modal Button functionnility -->
+  <script>
+    $(document).ready(function () {
+      $(".open-modal").on("click", function () {
+        const title = $(this).data("title");
+        const src = $(this).data("url");
+
+        $("#reusableModal .modal-title").text(title);
+        $("#reusableModal .modal-url").attr("src", src);
+        $("#reusableModal").removeClass("hidden");
+      });
+
+      $(".close-modal").on("click", function () {
+        $("#reusableModal").addClass("hidden");
+      });
+
+      // Optional: close when clicking outside the modal
+      $("#reusableModal").on("click", function (e) {
+        if (e.target === this) {
+          $(this).addClass("hidden");
+        }
       });
     });
   </script>

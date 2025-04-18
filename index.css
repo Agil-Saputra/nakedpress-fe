@@ -46,6 +46,17 @@
 	z-index: 0;
 }
 
+.hero-image-mobile {
+	position: absolute;
+	top: 0;
+	right: -45px;
+	object-fit: cover;
+	object-position: right;
+	height: 400px;
+	width: 100%;
+	z-index: 0;
+}
+
 /* .accordion-button.active + .accordion-content {
 	max-height: 500px;
 } */

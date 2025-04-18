@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <script src="./consts/best-seller-products.js"></script>
+    <script src="./consts/faq.js"></script>
+    <style>
+      .accordion-button {
+        height: 60px;
+        overflow: hidden;
+        transition: all 0.3s ease-out;
+      }
+      .active {
+        height: fit-content;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div id="navbar-container"></div>
+    </header>
+
+    <main class="mx-auto max-w-4xl px-4 my-32">
+      <nav class="mb-12">
+        <ul class="flex space-x-2 text-sm">
+          <li>
+            <a href="/" class="text-green-700 hover:underline"> Home </a>
+          </li>
+          <li>|</li>
+          <li>
+            <a href="/blog" class="text-green-700 hover:underline"> Blog </a>
+          </li>
+          <li>|</li>
+          <li>
+            <a href="/stories" class="text-green-700 hover:underline">
+              Stories
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <article class="prose prose-lg max-w-none">
+        <h1 class="text-4xl font-bold text-center mb-4">
+          Apa itu detox nakedpress?
+        </h1>
+
+        <div
+          class="flex items-center justify-center text-sm text-gray-600 mb-12"
+        >
+          <span>Wed, 05 Jun 2024</span>
+          <span class="mx-2">·</span>
+          <span>2 min read</span>
+          <span class="mx-2">·</span>
+          <span class="text-green-700">nakedpress team</span>
+        </div>
+
+        <p class="mb-4">
+          Detox nakedpress adalah puasa makan seharian dengan
+          <strong>hanya minum 8 botol jus</strong> nakedpress yang terbuat
+          <strong>dari 5 kg sayur buah</strong> segar tanpa gula tambahan.
+        </p>
+
+        <p class="mb-4">
+          <strong>Puasa memberi tubuh jeda dari</strong> proses mengolah makanan
+          sehari-hari yang biasanya banyak
+          <strong>gula, tepung, gorengan</strong>, dan ultra processed food.
+        </p>
+
+        <p class="mb-8">
+          <strong>Asupan sayur buah tinggi</strong> dari cold pressed juice
+          membantu
+          <strong>menurunkan berat badan, kolesterol, dan gula darah</strong>.
+        </p>
+
+        <h2 class="text-2xl font-bold mb-4">Kenapa harus detox puasa jus?</h2>
+
+        <p class="mb-4">
+          Pola makan modern kita terlalu banyak gula, tepung, gorengan, dan
+          ultra processed food yang nikmat dan mudah didapatkan.
+        </p>
+
+        <p class="mb-4">
+          Akibatnya, kesehatan usus terganggu, fungsi organ tubuh tidak optimum,
+          hormon tidak seimbang, dan sistem imun menurun.
+        </p>
+
+        <p class="mb-8">
+          Yang dirasakan mulai dari
+          <strong>
+            Susah BAB, gampang batuk pilek, Maag GERD kambuh terus, Mens gak
+            teratur, BB naik terus, Jerawatan, dan Kolesterol ataupun Gula Darah
+            tinggi </strong
+          >.
+        </p>
+
+        <h2 class="text-2xl font-bold mb-4">Apa manfaat detox?</h2>
+
+        <p class="mb-4">
+          Berdasarkan survei pelanggan nakedpress, ini hasil yang biasanya
+          dirasakan setelah rutin detox 1x seminggu selama minimal 5 minggu:
+        </p>
+
+        <ul class="list-disc pl-6 mb-4">
+          <li class="mb-2">
+            <strong>Nafsu makan terkontrol</strong> karena hormon pemicu lapar
+            dan gula darah lebih stabil.
+          </li>
+          <li class="mb-2">
+            <strong>Berat badan lebih mudah ideal</strong> karena pembakaran
+            energi lebih efisien.
+          </li>
+          <li class="mb-2">
+            <strong>Gejala Maag GERD berkurang</strong> karena bakteri usus
+            lebih seimbang.
+          </li>
+          <li><strong>Mens bebas nyeri dan lancar</strong>.</li>
+        </ul>
+      </article>
+    </main>
+
+    <footer id="footer-container"></footer>
+
+    <!-- Navbar & Footer loader -->
+    <script>
+      $(document).ready(function () {
+        $("#navbar-container").load("./navbar/navbar.html");
+        $("#footer-container").load("./footer/footer.html");
+      });
+    </script>
+  </body>
+</html>
