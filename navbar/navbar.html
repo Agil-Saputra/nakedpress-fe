@@ -9,6 +9,23 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <script src="https://cdn.tailwindcss.com"></script>
+	<style>
+        .search-input {
+            width: 0px;
+			opacity: 0;
+            padding: 0;
+            border: none;
+            outline: none;
+            transition: width 0.1s ease-in-out;
+        }
+        
+        .search-input.active {
+            width: 200px;
+			opacity: 1;
+            padding: 0.5rem;
+            border-bottom: 1px solid #ccc;
+        }
+    </style>
   </head>
   <body class="font-sans text-gray-800">
 	<div class="fixed bottom-12 right-12 w-12 h-12">
@@ -49,12 +66,13 @@
           </ul>
         </nav>
 
-        <!-- Right -->
-        <div class="flex items-center">
-          <button class="ml-6 text-lg text-gray-800 hover:text-green-700 transition">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
+       <!-- Search Icon and Input -->
+	   <div class="flex items-center relative">
+		<input type="text" class="search-input absolute right-0 bg-transparent" placeholder="Search...">
+		<button id="searchBtn" class="text-gray-700 focus:outline-none">
+			<i class="fas fa-search text-lg"></i>
+		</button>
+	</div>
       </div>
     </header>
 
@@ -108,6 +126,49 @@
 			  }
 			});
 		  });		  
+    </script>
+	<!-- input search functionality -->
+	<script>
+        $(document).ready(function() {
+            let searchActive = false;
+            
+            // Toggle search input when search icon is clicked
+            $("#searchBtn").click(function() {
+                if (!searchActive) {
+                    $(".search-input").addClass("active").focus();
+                    searchActive = true;
+                } else {
+                    // If input has value, perform search
+                    if ($(".search-input").val().trim() !== "") {
+                        // Perform search action here
+                        alert("Searching for: " + $(".search-input").val());
+                        $(".search-input").val("");
+                    }
+                    // Otherwise, close the search input
+                    $(".search-input").removeClass("active");
+                    searchActive = false;
+                }
+            });
+            
+            // Close search input when clicking outside
+            $(document).click(function(event) {
+                if (!$(event.target).closest('#searchBtn, .search-input').length && searchActive) {
+                    $(".search-input").removeClass("active");
+                    searchActive = false;
+                }
+            });
+            
+            // Handle Enter key press in search input
+            $(".search-input").keypress(function(e) {
+                if (e.which === 13) {
+                    // Perform search action here
+                    alert("Searching for: " + $(this).val());
+                    $(this).val("");
+                    $(this).removeClass("active");
+                    searchActive = false;
+                }
+            });
+        });
     </script>
   </body>
 </html>
