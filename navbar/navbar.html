@@ -48,7 +48,10 @@
               <span class="line w-full h-[2px] bg-gray-800 transition-all"></span>
             </span>
           </button>
-          <a href="/" class="flex items-center no-underline">
+          <a href="/" class="flex items-center no-underline lg:hidden block mobile-logo">
+            <span class="text-2xl font-bold text-green-700">nakedpress</span>
+          </a>
+          <a href="/" class="flex items-center no-underline lg:block hidden">
             <span class="text-2xl font-bold text-green-700">nakedpress</span>
           </a>
         </div>
@@ -136,6 +139,7 @@
             $("#searchBtn").click(function() {
                 if (!searchActive) {
                     $(".search-input").addClass("active").focus();
+                    $(".mobile-logo").addClass("opacity-0");
                     searchActive = true;
                 } else {
                     // If input has value, perform search
@@ -146,6 +150,7 @@
                     }
                     // Otherwise, close the search input
                     $(".search-input").removeClass("active");
+                    $(".mobile-logo").removeClass("opacity-1");
                     searchActive = false;
                 }
             });
@@ -154,6 +159,7 @@
             $(document).click(function(event) {
                 if (!$(event.target).closest('#searchBtn, .search-input').length && searchActive) {
                     $(".search-input").removeClass("active");
+                    $(".mobile-logo").removeClass("opacity-0");
                     searchActive = false;
                 }
             });
