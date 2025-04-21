@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Detail Product</title>
     <script src="https://cdn.tailwindcss.com"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css"
+      rel="stylesheet"
+    />
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <link
       rel="stylesheet"
@@ -21,6 +26,14 @@
       .active {
         height: fit-content;
       }
+	  .splide__arrow {
+		top : -400%;
+	  }
+
+	  .splide__slide {
+		border-radius: 8px;
+	  }
+
     </style>
   </head>
   <body>
@@ -47,11 +60,46 @@
         </ul>
       </nav>
 
-      <div class="flex flex-col md:flex-row gap-8">
-        <img
-          src="./assets/best-seller-2.webp"
-          class="md:w-1/2 bg-[#fff9e6] rounded-lg relative overflow-hidden"
-        />
+      <div class="flex flex-col md:flex-row gap-8 justify-center">
+		<div class="w-1/2">
+			<!-- Main Carousel -->
+			<div id="main-carousel" class="splide">
+			  <div class="splide__track">
+				<ul class="splide__list">
+				  <li class="splide__slide">
+					<img src="./assets/5weeks-program-1.webp" />
+				  </li>
+				  <li class="splide__slide">
+					<img src="./assets/5weeks-program-2.webp" />
+				  </li>
+				  <li class="splide__slide">
+					<img src="./assets/5weeks-program-3.webp" />
+				  </li>
+				</ul>
+			  </div>
+			</div>
+
+			<!-- Thumbnail Carousel -->
+			<div
+			  id="thumbnail-carousel"
+			  class="splide thumbnail-carousel"
+			  style="margin-top: 1rem"
+			>
+			  <div class="splide__track">
+				<ul class="splide__list">
+				  <li class="splide__slide">
+					<img src="./assets/5weeks-program-1.webp" />
+				  </li>
+				  <li class="splide__slide">
+					<img src="./assets/5weeks-program-2.webp" />
+				  </li>
+				  <li class="splide__slide">
+					<img src="./assets/5weeks-program-3.webp" />
+				  </li>
+				</ul>
+			  </div>
+			</div>
+		  </div>
         <!-- Right Column - Product Details -->
         <div class="md:w-1/2">
           <h1 class="text-4xl font-bold mb-2">Detox Original</h1>
@@ -150,5 +198,34 @@
         $("#footer-container").load("./footer/footer.html");
       });
     </script>
+	<script>
+		$(document).ready(function () {
+		  const main = new Splide("#main-carousel", {
+			type: "fade",
+			heightRatio: 1,
+			pagination: false,
+			arrows: false,
+			cover: true,
+		  }).mount();
+	
+		  const thumbnails = new Splide("#thumbnail-carousel", {
+			fixedWidth: 100,
+			fixedHeight: 64,
+			isNavigation: true,
+			gap: 10,
+			focus: "center",
+			pagination: false,
+			cover: true,
+			breakpoints: {
+			  600: {
+				fixedWidth: 66,
+				fixedHeight: 40,
+			  },
+			},
+		  }).mount();
+	
+		  main.sync(thumbnails);
+		});
+	  </script>
   </body>
 </html>
