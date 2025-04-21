@@ -18,8 +18,32 @@
       .active {
         height: fit-content;
       }
+
+	  .splide__slide img {
+		width: 100%;
+		height: auto;
+		border-radius: 8px !important;
+	  }
+	  .thumbnail-carousel .splide__slide {
+		opacity: 0.5;
+		cursor: pointer;
+		border-radius: 4px;
+	  }
+	  .thumbnail-carousel .splide__slide.is-active {
+		opacity: 1;
+		border: 2px solid #2A8D46 !important;
+	  }
+
+	  .splide__arrow {
+		top: -300% !important;
+	  }
     </style>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css"
+      rel="stylesheet"
+    />
     <script>
       tailwind.config = {
         theme: {
@@ -161,11 +185,43 @@
           <div class="bg-green-800 rounded-lg overflow-hidden">
             <div class="flex flex-col md:flex-row">
               <div class="md:w-1/2 p-6 md:p-8">
-                <img
-                  src="./assets/5weeks-program-2.webp"
-                  alt="Weight Loss Program"
-                  class="w-full h-full object-cover rounded-lg"
-                />
+                <!-- Main Carousel -->
+                <div id="main-carousel" class="splide">
+                  <div class="splide__track">
+                    <ul class="splide__list">
+                      <li class="splide__slide">
+                        <img src="./assets/5weeks-program-1.webp" />
+                      </li>
+                      <li class="splide__slide">
+                        <img src="./assets/5weeks-program-2.webp" />
+                      </li>
+                      <li class="splide__slide">
+                        <img src="./assets/5weeks-program-3.webp" />
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- Thumbnail Carousel -->
+                <div
+                  id="thumbnail-carousel"
+                  class="splide thumbnail-carousel"
+                  style="margin-top: 1rem"
+                >
+                  <div class="splide__track">
+                    <ul class="splide__list">
+                      <li class="splide__slide">
+                        <img src="./assets/5weeks-program-1.webp" />
+                      </li>
+                      <li class="splide__slide">
+                        <img src="./assets/5weeks-program-2.webp" />
+                      </li>
+                      <li class="splide__slide">
+                        <img src="./assets/5weeks-program-3.webp" />
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </div>
               <div class="md:w-1/2 p-6 md:p-8">
                 <h2 class="text-3xl font-bold text-white mb-3">
@@ -244,7 +300,9 @@
       </section>
 
       <section>
-        <div class="flex justify-between sm:items-center flex-col sm:flex-row mb-6">
+        <div
+          class="flex justify-between sm:items-center flex-col sm:flex-row mb-6"
+        >
           <div>
             <h1 class="lg:text-3xl text-xl font-bold text-gray-900">
               Paket Langganan
@@ -262,7 +320,7 @@
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-		<!-- product -->
+          <!-- product -->
           <div
             class="bg-white rounded-lg p-2 w-fit flex flex-col md:flex-row gap-6"
           >
@@ -292,7 +350,9 @@
                 <div class="flex justify-between items-start">
                   <div class="mb-6">
                     <p class="text-sm font-bold text-gray-900">Rp 1.500.000</p>
-                    <p class="text-gray-500 text-sm line-through">Rp 1.600.000</p>
+                    <p class="text-gray-500 text-sm line-through">
+                      Rp 1.600.000
+                    </p>
                   </div>
                   <button
                     class="bg-green-700 hover:bg-green-800 text-white font-semibold py-2 px-6 rounded-full text-sm transition-colors duration-200 h-fit"
@@ -646,6 +706,35 @@
           $(this).addClass("hidden");
         }
       });
+    });
+  </script>
+  <script>
+    $(document).ready(function () {
+      const main = new Splide("#main-carousel", {
+        type: "fade",
+        heightRatio: 0.9,
+        pagination: false,
+        arrows: false,
+        cover: true,
+      }).mount();
+
+      const thumbnails = new Splide("#thumbnail-carousel", {
+        fixedWidth: 100,
+        fixedHeight: 64,
+        isNavigation: true,
+        gap: 10,
+        focus: "center",
+        pagination: false,
+        cover: true,
+        breakpoints: {
+          600: {
+            fixedWidth: 66,
+            fixedHeight: 40,
+          },
+        },
+      }).mount();
+
+      main.sync(thumbnails);
     });
   </script>
 </html>
