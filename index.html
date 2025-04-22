@@ -19,14 +19,14 @@
         height: fit-content;
       }
 
-	  .splide__slide img {
-		width: 100%;
-		height: auto;
-		border-radius: 8px !important;
-	  }
-	  .splide__slide {
-		border-radius: 8px !important;
-	  }
+      .splide__slide img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px !important;
+      }
+      .splide__slide {
+        border-radius: 8px !important;
+      }
     </style>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
@@ -174,7 +174,7 @@
         <div class="container mx-auto">
           <div class="bg-green-800 rounded-lg overflow-hidden">
             <div class="flex flex-col md:flex-row items-center">
-              <div class="md:w-1/2 p-6 md:p-8">
+              <div class="md:w-1/2 w-full p-6 md:p-8">
                 <!-- Main Carousel -->
                 <div id="main-carousel" class="splide">
                   <div class="splide__track">
@@ -200,7 +200,9 @@
                   5 paket detox, 6x extra | Bonus Weight Loss Journal
                 </p>
                 <div class="flex items-center mb-6">
-                  <p class="text-2xl font-bold text-white text-yellow-400">Rp 1.500.000</p>
+                  <p class="text-2xl font-bold text-white text-yellow-400">
+                    Rp 1.500.000
+                  </p>
                   <p class="text-sm text-gray-300 line-through ml-2">
                     Rp 1.800.000
                   </p>
@@ -434,29 +436,33 @@
       BEST_SELLER_PRODUCTS.forEach(function (item) {
         const cardHtml = `
 		  <div class="lg:border border-0 flex items-start lg:flex-col rounded-lg overflow-hidden">
+
 			<img
 			  src="${item.image}"
 			  alt="${item.name}"
 			  class="lg:w-full w-32 h-28 lg:h-48 object-cover rounded-lg lg:rounded-none"
 			/>
+
 			<div class="px-4 gap-2 lg:py-4 flex lg:flex-col items-center lg:items-start w-full">
 			 <div>
 			  <h3 class="text-lg font-semibold text-primary">
 			  ${item.name}
 			  </h3>
-			  <p class="text-sm text-gray-600 mb-2 line-clamp-2 overflow-hidden text-ellipsis">
+			  <p class="text-xs mt-1 mb-2 text-gray-600 mb-2 line-clamp-2 overflow-hidden text-ellipsis">
 				loremaksndias sakjdnaksjndas doasnjdkjas dmasn dkjas dkas dkas
 			  ${item.description}
 			  </p>
-			 <p class="font-bold mb-1">Rp${item.price}</p>
-			 </div>
+			<div class="flex items-center gap-4 flex-row lg:items-start lg:flex-col">
+			<p class="font-bold">Rp${item.price}</p>
 			  <button
-				class="open-modal w-full bg-primary hover:bg-green-700 text-white font-medium py-2 px-4 rounded-full transition duration-300 h-fit lg:mt-4 max-w-24 lg:max-w-full"
+				class="open-modal w-full bg-primary hover:bg-green-700 text-white py-1 text-sm px-4 rounded-full transition duration-300 h-fit max-w-24 lg:max-w-full"
 				data-title="${item.name}"
 				data-url="https://www.w3schools.com"
 			  >
 				Beli
 			  </button>
+			</div>
+			</div>
 			</div>
 		  </div>
 
