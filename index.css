@@ -11,7 +11,6 @@
 }
 
 .hero {
-	background-color: #f8f3e3;
 	position: relative;
 	overflow: hidden;
 	height: 400px;
@@ -36,10 +35,7 @@
 
 .hero-image {
 	position: absolute;
-	top: 0;
-	left: 0;
 	object-fit: cover;
-	object-position: center;
 	height: 400px;
 	width: 100%;
 	z-index: 0;

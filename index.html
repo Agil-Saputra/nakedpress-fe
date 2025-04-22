@@ -19,6 +19,10 @@
         height: fit-content;
       }
 
+	  .title-active {
+		line-clamp: 2;
+	  }
+
       .splide__slide img {
         width: 100%;
         height: auto;
@@ -62,9 +66,10 @@
       <div id="navbar-container"></div>
     </header>
     <!-- Hero Section -->
-    <section class="hero lg:mt-[100px] mt-[30px]" id="home">
+    <section class="hero relative lg:mt-[70px] mt-[30px]" id="home">
+		<div class="absolute top-0 left-0 w-full bg-red-600 opacity-80 z-[3]"></div>=
       <div class="hero-container py-8 px-4 md:px-8 lg:px-16">
-        <div class="hero-content">
+        <div class="hero-content z-1">
           <h1 class="text-4xl md:text-5xl font-bold text-primary mb-4">
             Saatnya Detox
           </h1>
@@ -78,15 +83,11 @@
             Belanja
           </button>
         </div>
-        <img
-          class="hero-image hidden lg:block"
+
+		<img
+          class="hero-image lg:object-center object-right top-0 left-0"
           src="./assets/bg_homepage_desktop.jpg"
           alt="bg_homepage_desktop"
-        />
-        <img
-          class="hero-image-mobile block lg:hidden"
-          src="https://www.nakedpress.co/cdn/shop/files/May_Homepage_Mobile.jpg?v=1715831671"
-          alt="bg_homepage_mobile"
         />
       </div>
     </section>
@@ -600,10 +601,10 @@
         const cardHtml = `
 		  <div class="accordion-button cursor-pointer transition-all border border-gray-200 rounded-lg">
             <div
-              class="flex justify-between items-center w-full p-4 text-left"
+              class="flex justify-between items-start w-full p-4 text-left"
             >
-              <span class="text-green-600 font-medium">${item.question}</span>
-              <i class="fas fa-plus text-green-600"></i>
+              <span class="text-green-600 font-medium line-clamp-1">${item.question}</span>
+              <i class="fas fa-plus text-green-600 mt-1"></i>
             </div>
             <div class="px-4 pb-4">
               <p class="text-gray-600">
@@ -650,6 +651,14 @@
           console.log("sd");
           $(this).toggleClass("active");
           const $icon = $(this).find("i");
+		  const $title = $(this).find("span");
+		 
+		  if($title.hasClass("line-clamp-1")){
+			$title.removeClass("line-clamp-1").addClass("line-clamp-2")
+		  } else {
+			$title.removeClass("line-clamp-2").addClass("line-clamp-1")
+		  }
+
           if ($icon.hasClass("fa-plus")) {
             $icon.removeClass("fa-plus").addClass("fa-minus");
           } else {
